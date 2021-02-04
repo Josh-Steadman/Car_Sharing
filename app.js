@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
    
   });
 
+  app.get('/trips', (req, res) => {
+    res.sendFile(path.join(__dirname+'/views/trips.html'));
+   
+  });
+
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
 })

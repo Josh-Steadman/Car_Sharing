@@ -27,16 +27,36 @@
             text-align: center;
         }
 
-        #searchTool{
-            margin-top: 30px;
-            text-align: center;
+    
+
+        .tripContainer{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        #map{
-            height: 300px;
-            
-        }
+       .trips{
+         width: 35em;
+         background-color: lightgray;
+         border-radius: 10px;
+         text-align: left;
+         margin-bottom: 10px;
+         
+     }
 
+       h6{
+           margin: 10px 160px 10px 20px;
+       }
+
+       .price{
+           font-size: 20px;
+       }
+
+       .btn-edit{
+           position: relative;
+           bottom: 7em;
+           left: 30em;
+       }
        
 
         .footer{
@@ -207,22 +227,84 @@
           </nav>
 
         <div class="container">
-            <div class="header"> 
-                <h1 class="">Plan your next trip now</h1>
-                <h6>Save Money! Save the Environment!</h6>
-                <p>you can save £2000 a year using car sharing!</p>
+            <div class="header btn-add">
+            <button class="btn btn-blue" data-bs-target="#addTripModal" data-bs-toggle="modal">Add Trip</button>
             </div>
             
-            <div id="searchTool">
-                <form>
-                <input type="text" id="departure" placeholder="Origin" autocomplete="on">
-                <input type="text" id="destination" placeholder="Destination">
-                <input class="btn btn-blue" type="submit" value="Search">
-                </form>
+            <div class="container header tripContainer">
+                <div class="trips col-md-4 offset-md-3">
+                    <h6>Departure: Madrid, Spain <span class="float-end price">           £50</span></h6> 
+                    <h6>Destination: Valencia, Spain <span class="float-end">           Per Seat</span></h6> 
+                    <h6>Wed 3 Feb,2021 at 08:00 <span class="float-end">           2 left</span></h6> 
+                    <h6>One-Off Journey</h6> 
+                    <button class="btn btn-blue btn-edit">Edit</button>
+                </div>
+
+                <div class="trips col-md-4 offset-md-3">
+                    <h6>Departure: Madrid, Spain <span class="float-end price">           £50</span></h6> 
+                    <h6>Destination: Valencia, Spain <span class="float-end">           Per Seat</span></h6> 
+                    <h6>Wed 3 Feb,2021 at 08:00 <span class="float-end">           2 left</span></h6> 
+                    <h6>One-Off Journey</h6> 
+                    <button class="btn btn-blue btn-edit">Edit</button>
+                </div>
+               
+               
 
             </div>
             
-              <div id="map"></div>
+            <div>
+            
+                <form method="post" id="addtripform">
+                    <div class="modal" tabindex="-1" id="addTripModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Add Trip</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div id="signinmessage">
+                                
+                           </div>  
+                                <div class="mb-3">
+                                    <input type="text" name="departure" class="form-control" id="departure" aria-describedby="emailHelp" placeholder="Departure">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="destination" class="form-control" id="destination" placeholder="Destination">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="price" class="form-control" id="price" placeholder="Price per seat">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="date" class="form-control" id="date" placeholder="Date">
+                                </div>
+                             
+                            <!-- <p>Modal body text goes here.</p> -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="oneOff">
+                                <label class="form-check-label" for="oneOff">
+                                    one-Off
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="regular">
+                                <label class="form-check-label" for="regular">
+                                    Regular
+                                </label>
+                                
+                           </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-blue" data-bs-dismiss="modal" data-bs-target="#signUpModal" data-bs-toggle="modal">Register</button>
+                            <input type="submit" class="btn btn-blue" name="signup" value="Log in">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>    
+            </div>
            
             
             <div>
@@ -282,61 +364,7 @@
       <!-- <script src="../js/bootstrap.min.js"></script> -->
       <!-- <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
       <script src="../project_files/script.js"></script> --> 
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDpzYlGwUXJ829Fj1UdvpEjpPbTkpknQs&libraries=places"></script>
-      
-      <script>
-       
-       let mapOptions = {
-        center: {lat: 51.5, lng: -0.1},
-        zoom: 7,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    let input1 = document.getElementById("departure")
-    let input2 = document.getElementById("destination")
-
-    let options = {
-        types: ['(cities)']
-    }
-
-    let autocomplete1 = new google.maps.places.Autocomplete(input1, options);
-    let autocomplete2 = new google.maps.places.Autocomplete(input2, options);
-
-    let directionService = new google.maps.DirectionsService()
-     
-    google.maps.event.addDomListener(window, 'load', initialize())
-
-    function initialize(){
-
-        directionsDisplay = new google.maps.DirectionsRenderer();
-        let map = new google.maps.Map(document.getElementById("map"), mapOptions) 
-        directionsDisplay.setMap(map);
-     }
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDpzYlGwUXJ829Fj1UdvpEjpPbTkpknQs"></script>
    
-
-    google.maps.event.addListener(autocomplete1, 'place_changed', calcRoute)
-    google.maps.event.addListener(autocomplete2, 'place_changed', calcRoute)
-
-    function calcRoute() {
-        let start = $('#departure').val();
-        let end = $('#destination').val()
-        let request = {
-            origin: start,
-            destination: end,
-            travelMode: google.maps.DirectionsTravelMode.DRIVING
-        }
-        if(start && end) {
-            directionService.route(request, function(response, status){
-                if(status == google.maps.DirectionsStatus.OK){
-                    directionsDisplay.setDirections(response);
-                }
-            })
-        } else {
-            initialize()
-        }
-
-    }
-
-      </script>
     </body>
 </html>
