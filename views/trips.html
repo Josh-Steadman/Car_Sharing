@@ -73,6 +73,11 @@
         .btn-blue{
             background-color: #3abcfc;
         }
+
+        #days{
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
         
        .navbar-custom {
     background-color: #3abcfc;
@@ -276,27 +281,61 @@
                                     <input type="text" name="price" class="form-control" id="price" placeholder="Price per seat">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" name="date" class="form-control" id="date" placeholder="Date">
+                                    <input type="text" name="seats" class="form-control" id="seats" placeholder="Seats Available">
                                 </div>
                              
                             <!-- <p>Modal body text goes here.</p> -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="oneOff">
-                                <label class="form-check-label" for="oneOff">
+                            <div class="form-group">
+                               
+                                <label > <input class="form-check-input" type="radio" value="N" id="oneOff">
                                     one-Off
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="regular">
-                                <label class="form-check-label" for="regular">
+                                
+                                <label><input class="form-check-input" type="radio" value="Y" id="regular">
                                     Regular
                                 </label>
                                 
-                           </div>
+                            </div>
+
+                            <div class="checkbox checkbox-inline" id="days">
+                               
+                                <label > <input class="form-check-input" type="radio" value="" id="Monday">
+                                    Monday
+                                </label>
+                                
+                                <label><input class="form-check-input" type="radio" value="" id="Tuesday">
+                                   Tuesday
+                                </label>
+                                <label > <input class="form-check-input" type="radio" value="" id="Wednesday">
+                                    Wednesday
+                                </label>
+                                
+                                <label><input class="form-check-input" type="radio" value="" id="Thursday">
+                                   Thursday
+                                </label>
+                                <label > <input class="form-check-input" type="radio" value="" id="Friday">
+                                    Friday
+                                </label>
+                                
+                                <label><input class="form-check-input" type="radio" value="" id="Saturday">
+                                   Saturday
+                                </label>
+                                <label><input class="form-check-input" type="radio" value="" id="Sunday">
+                                    Sunday
+                                 </label>
+                                
+                            </div>
+
+                            <div class="mb-3">
+                                <input readonly="readonly" name="date" class="form-control" id="date" placeholder="Date">
+                            </div>
+                            <div class="mb-3">
+                                <input type="time" name="time" class="form-control" id="time" placeholder="">
+                            </div>
+                      
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-blue" data-bs-dismiss="modal" data-bs-target="#signUpModal" data-bs-toggle="modal">Register</button>
-                            <input type="submit" class="btn btn-blue" name="signup" value="Log in">
+                            <input type="submit" class="btn btn-blue" name="createTrip" value="Create Trip">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             
                           </div>
