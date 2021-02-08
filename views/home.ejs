@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title> page_title</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=devise-width, initial-scale=1, user-scalable=yes" > 
+     
+   
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <!-- <link  rel="stylesheet" href="../css/bootstrap.min.css"> -->
+      
+      <style>
+        body{
+            
+            background: url("../images/road2.jpg") no-repeat center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+       
+        .container{
+            margin-top: 40px;
+          
+           }
+        .header{
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #searchTool{
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #map{
+            height: 300px;
+            
+        }
+
+        .tripContainer{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+       .trips{
+         width: 35em;
+         background-color: lightgray;
+         border-radius: 10px;
+         text-align: left;
+         margin-bottom: 10px;
+         
+     }
+
+       h6{
+           margin: 10px 160px 10px 20px;
+       }
+
+       .price{
+           font-size: 20px;
+       }
+
+       .btn-edit{
+           position: relative;
+           bottom: 7em;
+           left: 30em;
+       }
+       
+
+        .footer{
+            /* background-color: lightgrey; */
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            bottom: 0;
+            line-height: 60px;
+            text-align: left;
+            color: black;
+        }
+
+        .btn-blue{
+            background-color: #3abcfc;
+        }
+        
+       .navbar-custom {
+    background-color: #3abcfc;
+    border-color: #19b1fc;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#6ccdfd), to(#3abcfc));
+    background-image: -webkit-linear-gradient(top, #6ccdfd, 0%, #3abcfc, 100%);
+    background-image: -moz-linear-gradient(top, #6ccdfd 0%, #3abcfc 100%);
+    background-image: linear-gradient(to bottom, #6ccdfd 0%, #3abcfc 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6ccdfd', endColorstr='#ff3abcfc', GradientType=0);
+  }
+  .navbar-custom .navbar-brand {
+    color: #ffffff;
+  }
+  .navbar-custom .navbar-brand:hover,
+  .navbar-custom .navbar-brand:focus {
+    color: #e6e6e6;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-text {
+    color: #ffffff;
+  }
+  .navbar-custom .navbar-nav > li:last-child > a {
+    border-right: 1px solid #19b1fc;
+  }
+  .navbar-custom .navbar-nav > li > a {
+    color: #ffffff;
+    border-left: 1px solid #19b1fc;
+  }
+  .navbar-custom .navbar-nav > li > a:hover,
+  .navbar-custom .navbar-nav > li > a:focus {
+    color: #c0c0c0;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-nav > .active > a,
+  .navbar-custom .navbar-nav > .active > a:hover,
+  .navbar-custom .navbar-nav > .active > a:focus {
+    color: #c0c0c0;
+    background-color: #19b1fc;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#19b1fc), to(#4cc2fc));
+    background-image: -webkit-linear-gradient(top, #19b1fc, 0%, #4cc2fc, 100%);
+    background-image: -moz-linear-gradient(top, #19b1fc 0%, #4cc2fc 100%);
+    background-image: linear-gradient(to bottom, #19b1fc 0%, #4cc2fc 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff19b1fc', endColorstr='#ff4cc2fc', GradientType=0);
+  }
+  .navbar-custom .navbar-nav > .disabled > a,
+  .navbar-custom .navbar-nav > .disabled > a:hover,
+  .navbar-custom .navbar-nav > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-toggle {
+    border-color: #dddddd;
+  }
+  .navbar-custom .navbar-toggle:hover,
+  .navbar-custom .navbar-toggle:focus {
+    background-color: #dddddd;
+  }
+  .navbar-custom .navbar-toggle .icon-bar {
+    background-color: #cccccc;
+  }
+  .navbar-custom .navbar-collapse,
+  .navbar-custom .navbar-form {
+    border-color: #17b0fb;
+  }
+  .navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+  .navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #c0c0c0;
+    border-bottom-color: #c0c0c0;
+  }
+  .navbar-custom .navbar-nav > .open > a,
+  .navbar-custom .navbar-nav > .open > a:hover,
+  .navbar-custom .navbar-nav > .open > a:focus {
+    background-color: #19b1fc;
+    color: #c0c0c0;
+  }
+  .navbar-custom .navbar-nav > .open > a .caret,
+  .navbar-custom .navbar-nav > .open > a:hover .caret,
+  .navbar-custom .navbar-nav > .open > a:focus .caret {
+    border-top-color: #c0c0c0;
+    border-bottom-color: #c0c0c0;
+  }
+  .navbar-custom .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+  }
+  @media (max-width: 767) {
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+      color: #ffffff;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+      color: #c0c0c0;
+      background-color: transparent;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+      color: #c0c0c0;
+      background-color: #19b1fc;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+      color: #cccccc;
+      background-color: transparent;
+    }
+  }
+  .navbar-custom .navbar-link {
+    color: #ffffff;
+    padding-left: 8px;
+  }
+  .nav-end{
+    padding-right: 10px;
+  }
+  .navbar-custom .navbar-link:hover {
+    color: #c0c0c0;
+  }
+
+  .navbar-link {
+      text-decoration: none;
+      margin-right: 10px;
+      text-align: center;
+  }
+
+      </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-custom navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-link active" aria-current="page" href="#/home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-link" href="#">My trips</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-link nav-end" href="#">Profile</a>
+                  </li>
+                </ul>
+                <a class="navbar-text nav-link col-md-1 offset-md-9" href="#" data-bs-toggle="modal" data-bs-target="#signOutModal">Log out</a>
+                
+              </div>
+            </div>
+          </nav>
+
+        <div class="container">
+            <div class="header"> 
+                <h1 class="">Plan your next trip now</h1>
+                <h5>Save Money! Save the Environment!</h5>
+                <p>you can save £2000 a year using car sharing!</p>
+            </div>
+            
+            <div id="searchTool">
+                <form method="POST" action="/home">
+                <input type="text" id="departure" name="departure" placeholder="Origin" autocomplete="on">
+                <input type="text" id="destination" name="destination" placeholder="Destination">
+                <input class="btn btn-blue" type="submit" value="Search">
+                </form>
+
+            </div>
+            
+              <div id="map"></div>
+           
+            
+            <div>
+            
+                <form method="post" id="signoutform">
+                    <div class="modal" tabindex="-1" id="signOutModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Login:</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div id="signinmessage">
+                                
+                           </div>  
+                                <div class="mb-3">
+                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+                             
+                            <!-- <p>Modal body text goes here.</p> -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="rememberme">
+                                <label class="form-check-label" for="rememberme">
+                                    Remember Me
+                                </label>
+                                <a style="cursor: pointer; margin-left: 175px" href="#" data-bs-target="#resetpasswordModal" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot password?</a>
+                           </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-blue" data-bs-dismiss="modal" data-bs-target="#signUpModal" data-bs-toggle="modal">Register</button>
+                            <input type="submit" class="btn btn-blue" name="signup" value="Log in">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+                    
+                    <div class="container header tripContainer">
+                        <% let list = '';
+                        for (i = 0; i < trips.length; i++) {
+                           list += `<div class="trips col-md-4 offset-md-3">
+                                     <h6>Departure: ${trips[i].departure} <span class="float-end price"> £${trips[i].price}</span></h6>
+                                     <h6>Destination: ${trips[i].destination} <span class="float-end">           Per Seat</span></h6>
+                                     <h6>${trips[i].date} <span class="float-end">           ${trips[i].seats} left</span></h6> 
+                                     <h6>One-Off Journey</h6>
+                                     <button class="btn btn-blue btn-edit">Select</button>
+                                    </div> `
+                        } %>
+                        <%- list %>
+                        <!-- <div class="trips col-md-4 offset-md-3">
+                            <h6>Departure: Madrid, Spain <span class="float-end price">           £50</span></h6> 
+                            <h6>Destination: Valencia, Spain <span class="float-end">           Per Seat</span></h6> 
+                            <h6>Wed 3 Feb,2021 at 08:00 <span class="float-end">           2 left</span></h6> 
+                            <h6>One-Off Journey</h6> 
+                            <button class="btn btn-blue btn-edit">Edit</button>
+                        </div> -->
+            
+                    </div>
+            </div>
+        </div>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+              <span >Js expert Developer.</span>
+            </div>
+          </footer>
+          
+    
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <!-- <script src="../js/bootstrap.min.js"></script> -->
+      <!-- <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+      <script src="../project_files/script.js"></script> --> 
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDpzYlGwUXJ829Fj1UdvpEjpPbTkpknQs&libraries=places"></script>
+      
+      <script>
+       
+       let mapOptions = {
+        center: {lat: 51.5, lng: -0.1},
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    let input1 = document.getElementById("departure")
+    let input2 = document.getElementById("destination")
+
+    let options = {
+        types: ['(cities)']
+    }
+
+    let autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+    let autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
+    let directionService = new google.maps.DirectionsService()
+     
+    google.maps.event.addDomListener(window, 'load', initialize())
+
+    function initialize(){
+
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        let map = new google.maps.Map(document.getElementById("map"), mapOptions) 
+        directionsDisplay.setMap(map);
+     }
+   
+
+    google.maps.event.addListener(autocomplete1, 'place_changed', calcRoute)
+    google.maps.event.addListener(autocomplete2, 'place_changed', calcRoute)
+
+    function calcRoute() {
+        let start = $('#departure').val();
+        let end = $('#destination').val()
+        let request = {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        }
+        if(start && end) {
+            directionService.route(request, function(response, status){
+                if(status == google.maps.DirectionsStatus.OK){
+                    directionsDisplay.setDirections(response);
+                }
+            })
+        } else {
+            initialize()
+        }
+
+    }
+
+      </script>
+    </body>
+</html>
