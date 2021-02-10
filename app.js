@@ -76,13 +76,13 @@ app.get('/', (req, res) => {
       if (err) throw err
       const db = con.getDb()
        let trips = db.collection("trips");
-      let t = trips.find({'destination': 'bristol', 'price': '15'});
+      let t = trips.find({});
       
       t.forEach(element => {
         tp.push(element)
         
       }).then(function() {
-        console.log(tp)
+        // console.log(tp)
         res.render("trips", {'trips': tp})
       })
       
@@ -96,7 +96,25 @@ app.get('/', (req, res) => {
     let t = new Trip()
     t.addTrip(trip);
     
-    res.sendFile(path.join(__dirname+'/views/home.html'));
+    res.redirect('/trips');
+  });
+
+  app.post('/trips/edit', urlencodedParser,function(req,res){
+    const trip = req.body
+    
+    let t = new Trip()
+    t.editTrip(trip);
+    
+    res.redirect('/trips');
+  });
+
+  app.post('/trips/delete', urlencodedParser,function(req,res){
+    const trip = req.body
+    console.log(trip)
+    let t = new Trip()
+    t.deleteTrip(trip);
+    
+    res.redirect('/trips');
   });
 
 
