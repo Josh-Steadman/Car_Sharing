@@ -219,16 +219,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="navbar-link active" aria-current="page" href="#/home">Home</a>
+                    <a class="navbar-link active" aria-current="page" href="/home">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="navbar-link" href="#">My trips</a>
+                    <a class="navbar-link" href="/trips">My trips</a>
                   </li>
                   <li class="nav-item">
                     <a class="navbar-link nav-end" href="#">Profile</a>
                   </li>
                 </ul>
-                <a class="navbar-text nav-link col-md-1 offset-md-9" href="#" data-bs-toggle="modal" data-bs-target="#signOutModal">Log out</a>
+                <a class="navbar-text nav-link col-md-1 offset-md-9" href="/logout">Log out</a>
                 
               </div>
             </div>
@@ -295,7 +295,8 @@
                     </form>
                     
                     <div class="container header tripContainer">
-                        <% let list = '';
+                        <% if(trips.length > 0) {
+                          let list = '';
                         for (i = 0; i < trips.length; i++) {
                            list += `<div class="trips col-md-4 offset-md-3">
                                      <h6>Departure: ${trips[i].departure} <span class="float-end price"> £${trips[i].price}</span></h6>
@@ -306,6 +307,7 @@
                                     </div> `
                         } %>
                         <%- list %>
+                      <% }%>
                         <!-- <div class="trips col-md-4 offset-md-3">
                             <h6>Departure: Madrid, Spain <span class="float-end price">           £50</span></h6> 
                             <h6>Destination: Valencia, Spain <span class="float-end">           Per Seat</span></h6> 

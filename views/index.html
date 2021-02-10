@@ -182,7 +182,7 @@
                     <a class="navbar-link active" aria-current="page" href="/home">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="navbar-link" href="#">My trips</a>
+                    <a class="navbar-link" href="/trips">My trips</a>
                   </li>
                   <li class="nav-item">
                     <a class="navbar-link nav-end" href="#">Profile</a>
@@ -242,7 +242,7 @@
                   </div>
                 </form>
 
-                <form method="post" id="signinform">
+                <form method="POST" id="signinform" action="/login">
                     <div class="modal" tabindex="-1" id="signInModal">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -272,7 +272,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-blue" data-bs-dismiss="modal" data-bs-target="#signUpModal" data-bs-toggle="modal">Register</button>
-                            <input type="submit" class="btn btn-blue" name="signup" value="Log in">
+                            <input type="submit" class="btn btn-blue" id="signup" value="Log in">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             
                           </div>

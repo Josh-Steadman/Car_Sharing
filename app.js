@@ -5,6 +5,7 @@ const fs = require("fs")
 const path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 const con = require("./connect.js")
 const User = require("./modals/user.js");
@@ -17,6 +18,23 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const app = express();
 
+app.use(session({
+  key: 'user_js',
+  secret: 'strawhat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
+}));
+
+var sessionChecker = (req, res, next) => {
+  if (req.session.user && req.cookies.user_js) {
+      res.redirect('/home');
+  } else {
+      next();
+  }    
+};
 
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -26,22 +44,60 @@ app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 const port = 3000
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname+'/views/index.html'));
+app.get('/', sessionChecker, (req, res) => {
+  res.sendFile(path.join(__dirname+'/views/index.html'));
+});
+
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname+'/views/index.html'));
    
-  });
+//   });
 
   app.post('/', urlencodedParser,function(req,res){
     const user = req.body
   
     u = new User()
     u.addUser(user);
+    req.session.user = user
     
-    res.sendFile(path.join(__dirname+'/views/home.html'));
+    res.redirect('/home');
   });
 
+  // create log in route
+  app.post('/login', urlencodedParser,function(req,res){
+    const email = req.body.email
+    
+    con.connectToServer(async (err) => {
+      if (err) throw err
+      const db = con.getDb()
+       let users = db.collection("users");
+       console.log(email)
+       users.findOne({  email: email }).then(function (user) {
+        if (!user) {
+            console.log("user dose not exist")
+            res.redirect('/');
+        } else {
+            console.log(user)
+            req.session.user = user
+            res.redirect('/home');
+        }
+    });;
+   
+      
+  })
+    
+  
+  });
+
+
   app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname+'/views/home.html'));
+    if(req.session.user) {
+      let tp = []
+      res.render("home", {'trips': tp})
+    } else {
+      res.redirect('/')
+    }
+   
    
   });
 
@@ -71,22 +127,27 @@ app.get('/', (req, res) => {
   });
 
   app.get('/trips', (req, res) => {
-    let tp = []
-    con.connectToServer(async (err) => {
-      if (err) throw err
-      const db = con.getDb()
-       let trips = db.collection("trips");
-      let t = trips.find({});
-      
-      t.forEach(element => {
-        tp.push(element)
+    if(req.session.user && req.cookies.user_sid) {
+      let tp = []
+      con.connectToServer(async (err) => {
+        if (err) throw err
+        const db = con.getDb()
+         let trips = db.collection("trips");
+        let t = trips.find({});
         
-      }).then(function() {
-        // console.log(tp)
-        res.render("trips", {'trips': tp})
-      })
-      
-  })
+        t.forEach(element => {
+          tp.push(element)
+          
+        }).then(function() {
+          // console.log(tp)
+          res.render("trips", {'trips': tp})
+        })
+        
+    })
+    } else {
+      res.redirect('/')
+    }
+ 
      
   });
 
@@ -116,6 +177,15 @@ app.get('/', (req, res) => {
     
     res.redirect('/trips');
   });
+
+  app.get('/logout', (req, res) => {
+    if (req.session.user && req.cookies.user_js) {
+        res.clearCookie('user_js');
+        res.redirect('/');
+    } else {
+        res.redirect('/home');
+    }
+});
 
 
 app.listen(port, () => {

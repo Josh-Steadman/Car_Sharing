@@ -37,6 +37,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            
         }
 
        .trips{
@@ -45,6 +46,7 @@
          border-radius: 10px;
          text-align: left;
          margin-bottom: 10px;
+         height: 170px;
          
      }
 
@@ -64,8 +66,12 @@
 
        .btn-del{
            position: relative;
-           bottom: 4em;
-           left: 26em;
+           bottom: 6em;
+           left: 29.5em;
+       }
+
+       .top{
+           margin-top: 30px;
        }
        
 
@@ -227,16 +233,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="navbar-link active" aria-current="page" href="#/home">Home</a>
+                <a class="navbar-link active" aria-current="page" href="/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="navbar-link" href="#">My trips</a>
+                <a class="navbar-link" href="">My trips</a>
               </li>
               <li class="nav-item">
                 <a class="navbar-link nav-end" href="#">Profile</a>
               </li>
             </ul>
-            <a class="navbar-text nav-link col-md-1 offset-md-9" href="#" data-bs-toggle="modal" data-bs-target="#signOutModal">Log out</a>
+            <a class="navbar-text nav-link col-md-1 offset-md-9" href="/logout">Log out</a>
             
           </div>
         </div>
@@ -252,7 +258,7 @@
             for (i = 0; i < trips.length; i++) {
                list += `<div class="trips col-md-4 offset-md-3">
                          <h6 class="visually-hidden"> ${trips[i]._id}</h6>
-                         <h6>Departure: ${trips[i].departure} <span class="float-end price"> £${trips[i].price}</span></h6>
+                         <h6 class="top">Departure: ${trips[i].departure} <span class="float-end price"> £${trips[i].price}</span></h6>
                          <h6>Destination: ${trips[i].destination} <span class="float-end">           Per Seat</span></h6>
                          <h6>${trips[i].date} <span class="float-end">           ${trips[i].seats} left</span></h6> 
                          <h6>One-Off Journey</h6>
