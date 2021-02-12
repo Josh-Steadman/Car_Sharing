@@ -1,5 +1,9 @@
 # Car_Sharing
 
+Description
+-------
+this web application allows a user to sign-up and log themselevs in, storing the users data within the session. The user will then be able to search for trips going from and to their required cities aswell as posting their own journeys for other users to see!
+
 How to run
 -------
 
