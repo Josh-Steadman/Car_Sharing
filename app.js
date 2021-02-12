@@ -48,10 +48,7 @@ app.get('/', sessionChecker, (req, res) => {
   res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname+'/views/index.html'));
-   
-//   });
+
 
   app.post('/', urlencodedParser,function(req,res){
     const user = req.body
@@ -71,13 +68,11 @@ app.get('/', sessionChecker, (req, res) => {
       if (err) throw err
       const db = con.getDb()
        let users = db.collection("users");
-       console.log(email)
        users.findOne({  email: email }).then(function (user) {
         if (!user) {
             console.log("user dose not exist")
             res.redirect('/');
         } else {
-            console.log(user)
             req.session.user = user
             res.redirect('/home');
         }
@@ -117,23 +112,23 @@ app.get('/', sessionChecker, (req, res) => {
         
       }).then(function() {
         console.log(tp)
-        res.render("home", {'trips': tp})
+        res.render("home", {'trips': tp, 'search': search})
       })
       
   })
  
     
-    // res.sendFile(path.join(__dirname+'/views/home.html'));
+  
   });
 
   app.get('/trips', (req, res) => {
-    if(req.session.user && req.cookies.user_sid) {
+    if(req.session.user && req.cookies.user_js) {
       let tp = []
       con.connectToServer(async (err) => {
         if (err) throw err
         const db = con.getDb()
          let trips = db.collection("trips");
-        let t = trips.find({});
+        let t = trips.find({userEmail: req.session.user.email});
         
         t.forEach(element => {
           tp.push(element)
@@ -153,7 +148,7 @@ app.get('/', sessionChecker, (req, res) => {
 
   app.post('/trips', urlencodedParser,function(req,res){
     const trip = req.body
-    
+    trip.userEmail = req.session.user.email
     let t = new Trip()
     t.addTrip(trip);
     
@@ -175,6 +170,7 @@ app.get('/', sessionChecker, (req, res) => {
     let t = new Trip()
     t.deleteTrip(trip);
     
+    
     res.redirect('/trips');
   });
 
@@ -185,6 +181,12 @@ app.get('/', sessionChecker, (req, res) => {
     } else {
         res.redirect('/home');
     }
+});
+
+app.get('/profile', urlencodedParser,function(req,res){
+  
+  user = req.session.user
+  res.render('profile', {'user': user});
 });
 
 

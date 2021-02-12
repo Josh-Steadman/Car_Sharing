@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title> page_title</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=devise-width, initial-scale=1, user-scalable=yes" > 
+     
+   
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <link  rel="stylesheet" type="text/css" href="/lib/styling.css">
+     
+   
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-custom navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-link active" aria-current="page" href="/home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-link" href="/trips">My trips</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-link nav-end" href="#">Profile</a>
+                  </li>
+                </ul>
+                <a class="navbar-text nav-link col-md-1 offset-md-9" href="/logout">Log out</a>
+                
+              </div>
+            </div>
+          </nav>
+
+        <div class="container">
+            <div class="header"> 
+                <h1 class="">Profile</h1>
+                <h5>Edit your profile</h5>
+            </div>
+            <div>
+                <div class="header">
+                <button type="button" class="btn btn-blue " data-bs-toggle="modal" data-bs-target="#editInfoModal">
+                    Edit info
+                  </button>
+                </div>  
+                  
+                <form method="post" id="editinfoform">
+                    <div class="modal" tabindex="-1" id="editInfoModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Login:</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div id="editinfomessage">
+                                
+                           </div>  
+                                <div class="mb-3">
+                                    <input type="text" name="editusername" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" name="editemail" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" name="editpassword" class="form-control" id="password" placeholder="Password">
+                                </div>
+                             
+                            <!-- <p>Modal body text goes here.</p> -->
+                          
+                          </div>
+                          <div class="modal-footer">
+                            <input type="submit" class="btn btn-blue" name="signup" value="Edit">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+              
+            </div>
+         
+            <table class="table table-dark table-bordered table-hover">
+              
+                <tbody>
+                  <tr>
+                    <th scope="row">Username</th>
+                    <td><%= user.username %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Email</th>
+                    <td><%= user.email %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Password</th>
+                    <td colspan="2"><%= user.password %></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+              <span >Js expert Developer.</span>
+            </div>
+          </footer>
+          
+    
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+      
+      </script>
+    </body>
+</html>
