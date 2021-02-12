@@ -12,6 +12,6 @@ How to run
 
 ### Screenshots ### 
 
-<img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/MyTrips.png" width="400" height="400"><img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/Search.png" width="400" height="400">
-<img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/SignUp.png" width="400" height="400"><img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/addTrip.png" width="400" height="400">
+<img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/MyTrips.png" width="600" height="400"><img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/Search.png" width="600" height="400">
+<img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/SignUp.png" width="600" height="400"><img src="https://github.com/Josh-Steadman/Car_Sharing/blob/main/public/images/addTrip.png" width="400" height="400">
 
